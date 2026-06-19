@@ -58,7 +58,7 @@
 ## 기술 스택 및 Tool
 
 | 아이콘 | 이름 | 내용(작업쓰인내용) |
-|---|---|---|
+|:---:|:---:|---|
 | <img src="https://cdn.simpleicons.org/python/3776AB" width="22" alt="Python" /> | Python 3.11 | LangGraph Pipeline, MCP Tool, 데이터 전처리, 인덱싱, 평가 스크립트 구현 |
 | <img src="https://cdn.simpleicons.org/langchain/1C3C3C" width="22" alt="LangGraph" /> | LangGraph | 사용자 질문을 RAG, 계산, 법령/API, 그래프 경로로 라우팅하고 ReAct 루프 구성 |
 | <img src="https://cdn.simpleicons.org/langchain/1C3C3C" width="22" alt="LangChain" /> | LangChain / ChatOpenAI | `gpt-5.4-mini` 라우터, 답변 생성, 내부 검증 성격 후처리, LLM-as-a-Judge 평가 연결 |
