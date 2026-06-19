@@ -57,23 +57,92 @@
 
 ## 기술 스택 및 Tool
 
-| 아이콘 | 이름 | 내용(작업쓰인내용) |
-|:---:|:---:|---|
-| <img src="https://cdn.simpleicons.org/python/3776AB" width="22" alt="Python" /> | Python 3.11 | LangGraph Pipeline, MCP Tool, 데이터 전처리, 인덱싱, 평가 스크립트 구현 |
-| <img src="https://cdn.simpleicons.org/langchain/1C3C3C" width="22" alt="LangGraph" /> | LangGraph | 사용자 질문을 RAG, 계산, 법령/API, 그래프 경로로 라우팅하고 ReAct 루프 구성 |
-| <img src="https://cdn.simpleicons.org/langchain/1C3C3C" width="22" alt="LangChain" /> | LangChain / ChatOpenAI | `gpt-5.4-mini` 라우터, 답변 생성, 내부 검증 성격 후처리, LLM-as-a-Judge 평가 연결 |
-| <img src="https://github.com/modelcontextprotocol.png" width="22" alt="MCP" /> | FastMCP | `rag_server.py`, `db_server.py`, `law_server.py`, `graph_server.py` 4개 Tool 모듈과 16개 Tool 구성 |
-| <img src="https://github.com/chroma-core.png" width="22" alt="ChromaDB" /> | ChromaDB | 한자, 수리, 오행, 법령, 순우리말, 논문 6개 컬렉션 벡터 검색 저장소로 사용 |
-| <img src="https://cdn.simpleicons.org/neo4j/4581C3" width="22" alt="Neo4j" /> | Neo4j | 한자, 음, 획수, 오행, 법령 허용 관계를 그래프로 구성하고 탐색 |
-| <img src="https://github.com/openai.png" width="22" alt="OpenAI" /> | OpenAI API | 운영 기본 모델 `gpt-5.4-mini` 기반 답변 생성과 평가에 사용 |
-| <img src="https://cdn.simpleicons.org/alibabacloud/FF6A00" width="22" alt="Qwen" /> | Qwen3.5-4B LoRA | sLLM 파인튜닝 실험 및 GPT Pipeline과의 성능 비교에 사용 |
-| <img src="https://cdn.simpleicons.org/huggingface/FFD21E" width="22" alt="Hugging Face" /> | sentence-transformers | `jhgan/ko-sroberta-multitask` 로컬 임베딩 모델로 ChromaDB 문서 벡터화 |
-| <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobeacrobatreader.svg" width="22" alt="PDF" /> | pdfplumber / pypdf | 한자, 법령, 논문 PDF 텍스트 추출 및 전처리 보조 |
-| <img src="https://cdn.simpleicons.org/pypi/3775A9" width="22" alt="KoNLPy" /> | KoNLPy Okt | 법령 및 한국어 텍스트 전처리에서 형태소 분석과 정규화 보조 |
-| <img src="https://cdn.simpleicons.org/pandas/150458" width="22" alt="pandas" /> | pandas / openpyxl / xlrd | XLS/XLSX 기반 이름 통계, 오행표, 성씨 보조 데이터 처리 |
-| <img src="https://cdn.simpleicons.org/fastapi/009688" width="22" alt="API" /> | requests + 외부 API | 국가법령정보 API와 우리말샘 API 조회 및 검증 흐름에 사용 |
-| <img src="https://cdn.simpleicons.org/docker/2496ED" width="22" alt="Docker" /> | Docker Compose | Pipeline Server 컨테이너 실행과 `src`, `pipelines`, `data` 볼륨 마운트 |
-| <img src="https://github.com/open-webui.png" width="22" alt="Open WebUI" /> | Open WebUI Pipelines | 사용자 질문 입력과 Pipeline Server 연동 진입점으로 사용 |
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="10%" style="text-align: center;">아이콘</th>
+      <th width="25%" style="text-align: center;">이름</th>
+      <th width="65%" style="text-align: left;">내용(작업쓰인내용)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/python/3776AB" width="22" alt="Python" /></td>
+      <td align="center" style="white-space: nowrap;">Python 3.11</td>
+      <td>LangGraph Pipeline, MCP Tool, 데이터 전처리, 인덱싱, 평가 스크립트 구현</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/langchain/1C3C3C" width="22" alt="LangGraph" /></td>
+      <td align="center" style="white-space: nowrap;">LangGraph</td>
+      <td>사용자 질문을 RAG, 계산, 법령/API, 그래프 경로로 라우팅하고 ReAct 루프 구성</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/langchain/1C3C3C" width="22" alt="LangChain" /></td>
+      <td align="center" style="white-space: nowrap;">LangChain / ChatOpenAI</td>
+      <td>`gpt-5.4-mini` 라우터, 답변 생성, 내부 검증 성격 후처리, LLM-as-a-Judge 평가 연결</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://github.com/modelcontextprotocol.png" width="22" alt="MCP" /></td>
+      <td align="center" style="white-space: nowrap;">FastMCP</td>
+      <td>`rag_server.py`, `db_server.py`, `law_server.py`, `graph_server.py` 4개 Tool 모듈과 16개 Tool 구성</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://github.com/chroma-core.png" width="22" alt="ChromaDB" /></td>
+      <td align="center" style="white-space: nowrap;">ChromaDB</td>
+      <td>한자, 수리, 오행, 법령, 순우리말, 논문 6개 컬렉션 벡터 검색 저장소로 사용</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/neo4j/4581C3" width="22" alt="Neo4j" /></td>
+      <td align="center" style="white-space: nowrap;">Neo4j</td>
+      <td>한자, 음, 획수, 오행, 법령 허용 관계를 그래프로 구성하고 탐색</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://github.com/openai.png" width="22" alt="OpenAI" /></td>
+      <td align="center" style="white-space: nowrap;">OpenAI API</td>
+      <td>운영 기본 모델 `gpt-5.4-mini` 기반 답변 생성과 평가에 사용</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/alibabacloud/FF6A00" width="22" alt="Qwen" /></td>
+      <td align="center" style="white-space: nowrap;">Qwen3.5-4B LoRA</td>
+      <td>sLLM 파인튜닝 실험 및 GPT Pipeline과의 성능 비교에 사용</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/huggingface/FFD21E" width="22" alt="Hugging Face" /></td>
+      <td align="center" style="white-space: nowrap;">sentence-transformers</td>
+      <td>`jhgan/ko-sroberta-multitask` 로컬 임베딩 모델로 ChromaDB 문서 벡터화</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobeacrobatreader.svg" width="22" alt="PDF" /></td>
+      <td align="center" style="white-space: nowrap;">pdfplumber / pypdf</td>
+      <td>한자, 법령, 논문 PDF 텍스트 추출 및 전처리 보조</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/pypi/3775A9" width="22" alt="KoNLPy" /></td>
+      <td align="center" style="white-space: nowrap;">KoNLPy Okt</td>
+      <td>법령 및 한국어 텍스트 전처리에서 형태소 분석과 정규화 보조</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/pandas/150458" width="22" alt="pandas" /></td>
+      <td align="center" style="white-space: nowrap;">pandas / openpyxl / xlrd</td>
+      <td>XLS/XLSX 기반 이름 통계, 오행표, 성씨 보조 데이터 처리</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/fastapi/009688" width="22" alt="API" /></td>
+      <td align="center" style="white-space: nowrap;">requests + 외부 API</td>
+      <td>국가법령정보 API와 우리말샘 API 조회 및 검증 흐름에 사용</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://cdn.simpleicons.org/docker/2496ED" width="22" alt="Docker" /></td>
+      <td align="center" style="white-space: nowrap;">Docker Compose</td>
+      <td>Pipeline Server 컨테이너 실행과 `src`, `pipelines`, `data` 볼륨 마운트</td>
+    </tr>
+    <tr>
+      <td align="center"><img src="https://github.com/open-webui.png" width="22" alt="Open WebUI" /></td>
+      <td align="center" style="white-space: nowrap;">Open WebUI Pipelines</td>
+      <td>사용자 질문 입력과 Pipeline Server 연동 진입점으로 사용</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
